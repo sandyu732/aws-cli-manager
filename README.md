@@ -1,9 +1,9 @@
 # aws-cli-manager
-Command line tool to manager aws resources EC2
+Command line tool to manage aws resources EC2
 
 ## About
 
-This project works with AWS EC2 resources and uses boto3 to manage the resources. We have names this project as "bouncy"
+This project works with AWS EC2 resources and uses boto3 to manage the resources. We have named this project as "bouncy"
 
 ## Configuration
 
