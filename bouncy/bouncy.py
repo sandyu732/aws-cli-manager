@@ -2,8 +2,9 @@ import boto3
 import botocore
 import click
 
-session = boto3.Session(profile_name='sandy')
-ec2_session = session.resource('ec2')
+
+#session = boto3.Session(profile_name=aws_profile)
+#ec2_session = session.resource('ec2')
 
 def get_instances(project):
     instances = []
@@ -19,11 +20,14 @@ def has_pending_snapshot(volume):
     return snapshot and snapshot[0].state == "pending"
 
 @click.group()
-def cli():
+@click.option('--profile', required=True, type=str, help='Provide the AWS profile name')
+def cli(profile):
+    global ec2_session 
+    session = boto3.Session(profile_name=profile)
+    ec2_session = session.resource('ec2')
     """Command Line Manager"""
 
 @cli.group('instances')
-#@click.option('--profile', required=True, type=str, help='Provide the AWS profile name')
 def instances():
     """Commands for Instances"""
 
@@ -78,7 +82,6 @@ def list_volumes(project):
 @click.option('--project', default=None, show_default=True, help="Filter's instances for provided project name")
 def list_instances(project):
     instances = get_instances(project)
-
     for i in instances:
         tags = { t['Key'] : t['Value'] for t in i.tags or [] }
         print(', '.join((
