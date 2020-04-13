@@ -23,6 +23,7 @@ def cli():
     """Command Line Manager"""
 
 @cli.group('instances')
+#@click.option('--profile', required=True, type=str, help='Provide the AWS profile name')
 def instances():
     """Commands for Instances"""
 
