@@ -20,9 +20,17 @@ How to configure AWS CLI profile:-
 ### Installation Requirents 
 The code has been developed to adapt with python3 version. Below are the required packages for this project
 
-* python3
+* python virtual env
+    "pip3 install pipenv"
+* Python3
+    "pipenv --three"
 * Click
+    "pipenv install click"
 * boto3
+    "pipenv install boto3"
 * setuptools 
+    "pipenv install setuptools"
+
+    
 
 
