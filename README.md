@@ -31,6 +31,40 @@ The code has been developed to adapt with python3 version. Below are the require
 * setuptools 
 `pipenv install setuptools`
 
+### Running the tool
+* Go to virtual env shell
+`pipenv shell`
+* Run the command as follows
+`python bouncy/bouncy.py --profile <profile_name> <command> <subcommand> --project <project_name>`
+* Commands are instances, volumes, or snapshots 
+* Subcommands depends on command project is optional
+
+### Installing the module as package
+* Creating a distribution package and installing the package using setup.py in egg format.
+`pipenv install --editable .`
+* This makes the tool running easy 
+1.  Go to virtual env shell `pipenv shell`
+2. Give the required using the tool name, <bouncy> here `bouncy --profile sandy instances --help`
+
+"""(aws-cli-manager) bash-3.2$ bouncy --profile sandy instances --help
+Usage: bouncy instances [OPTIONS] COMMAND [ARGS]...
+
+  Commands for Instances
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  list       Command to list the EC2 istances.
+  snapshots  Command to create snapshot of the ec2 instances
+  start      Command to start the ec2 instances
+  stop       Command to stop the ec2 instances"""
+
+
+* Creating a distribution package in wheel format
+1. Go to virtual env shell `pipenv shell`
+2. Create the distribution package `python setup.py bdist_wheel`
+3. A `dist` folder should be created in the current directory having `*.whl` package (eg:- bouncy-0.1-py3-none-any.whl)
 
 
 
